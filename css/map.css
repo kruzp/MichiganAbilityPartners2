@@ -847,3 +847,31 @@ button { font: inherit; color: inherit; }
 .tee__info span { color: var(--ink-3); font-size: .95rem; }
 .tee__info u { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: .2em; text-decoration-color: var(--peri); margin-top: .4rem; }
 @media (max-width: 860px) { .merch { grid-template-columns: 1fr; max-width: 420px; } }
+
+/* Larger text settings: keep the hero headline inside its column.
+   The headline is already display-size, so it holds its visual size while body text grows. */
+.hero__copy { min-width: 0; }
+.hero__copy h1 { overflow-wrap: break-word; }
+html[data-text="lg"] .hero .h-xl { font-size: clamp(2.7rem, 6.2vw, 6.4rem); }
+html[data-text="xl"] .hero .h-xl { font-size: clamp(2.45rem, 5.5vw, 5.7rem); }
+html[data-text="lg"] .ptitle h1 { font-size: clamp(2.5rem, 6.2vw, 5.7rem); }
+html[data-text="xl"] .ptitle h1 { font-size: clamp(2.3rem, 5.6vw, 5.1rem); }
+
+/* about · mission route illustration */
+.mroute { margin: 2rem 0 0; max-width: 420px; }
+.mroute svg { width: 100%; height: auto; display: block; overflow: visible; }
+.mroute .mr-l { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s var(--ease) var(--d); }
+.mroute.is-in .mr-l { stroke-dashoffset: 0; }
+.mroute .mr-s, .mroute .mr-hub, .mroute .mr-home { opacity: 0; transition: opacity .6s ease var(--d, 1.5s); }
+.mroute .mr-home { transform: translateY(8px); transform-box: fill-box; transition: opacity .7s ease 1.7s, transform .7s var(--ease) 1.7s; }
+.mroute .mr-hub { transition-delay: 1.4s; }
+.mroute.is-in .mr-s, .mroute.is-in .mr-hub, .mroute.is-in .mr-home { opacity: 1; transform: none; }
+.mroute .mr-trains { opacity: 0; transition: opacity .6s ease 2s; }
+.mroute.is-in .mr-trains { opacity: 1; }
+.mroute figcaption { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 1rem; font-family: var(--mono); font-size: .75rem; color: var(--ink-3); }
+@media (max-width: 900px) { .mroute { max-width: 340px; margin-top: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .mroute .mr-l { stroke-dashoffset: 0; transition: none; }
+  .mroute .mr-s, .mroute .mr-hub, .mroute .mr-home { opacity: 1; transform: none; transition: none; }
+  .mroute .mr-trains { display: none; }
+}
